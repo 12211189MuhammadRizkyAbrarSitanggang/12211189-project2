@@ -13,7 +13,7 @@ class LoginView extends StatelessWidget {
             Stack(
               children: [
                 CardFormLogin(),
-                LogiAplikasi(),
+                LogoAplikasi(),
               ],
             )
           ],
@@ -70,8 +70,8 @@ class CardFormLogin extends StatelessWidget {
   }
 }
 
-class LogiAplikasi extends StatelessWidget {
-  const LogiAplikasi({
+class LogoAplikasi extends StatelessWidget {
+  const LogoAplikasi({
     super.key,
   });
 
