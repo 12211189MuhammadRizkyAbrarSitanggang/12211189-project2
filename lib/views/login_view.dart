@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginViews extends StatelessWidget {
+  const LoginViews({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +9,19 @@ class LoginView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            JudulHalamanLogin(),
-            Stack(
-              children: [
-                CardFormLogin(),
-                LogoAplikasi(),
-              ],
-            )
+            _JudulFormLogin(),
+
+              Stack(
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(top: 145),
+                    child: _FormLogin(),
+                  ), 
+                  Center(child: _LogoAplikasi()),
+
+                ],
+              )
+      
           ],
         ),
       ),
@@ -23,109 +29,132 @@ class LoginView extends StatelessWidget {
   }
 }
 
-class CardFormLogin extends StatelessWidget {
-  const CardFormLogin({
+class _FormLogin extends StatelessWidget {
+  const _FormLogin({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        margin: EdgeInsets.fromLTRB(30, 130, 30, 20),
-        color: Color.fromARGB(255, 233, 204, 204),
-        elevation: 10,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30,
-            ),
-            InputTextAja(),
-            SizedBox(
-              height: 20,
-            ),
-            InputTextAja(),
-            SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text('Login'),
-              ),
-              style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15)),
-                  backgroundColor: Colors.red),
-            ),
-            SizedBox(
-              height: 20,
-            )
-          ],
-        ),
-      ),
+    return Card(
+     shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15) 
+     ),
+     color: Colors.grey[400],
+     margin: EdgeInsets.fromLTRB(20, 30, 20, 0),
+     child: Padding(
+       padding: const EdgeInsets.all(20.0),
+       child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: [
+           const InputField(label: 'Username',),
+           const InputField(label: 'Password',
+             obsecure: true,
+           ),
+      
+           _TombolLogin()
+         ],
+       ),
+     ),
     );
   }
 }
 
-class LogoAplikasi extends StatelessWidget {
-  const LogoAplikasi({
+class _TombolLogin extends StatelessWidget {
+  const _TombolLogin({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: Image.asset(
-          'assets/logo.png',
-          width: 130,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.red,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20)
+          )
         ),
-      ),
+        onPressed: (){
+    
+      }, child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Text('Login'),
+      )),
     );
   }
 }
 
-class InputTextAja extends StatelessWidget {
-  const InputTextAja({
+class InputField extends StatelessWidget {
+  final String label;
+  final bool obsecure;
+
+  const InputField({
+    super.key,
+    this.label = '',
+    this.obsecure = false
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text( label ),
+          TextField(
+            obscureText: obsecure,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                  width: 0,
+                ),
+                borderRadius: BorderRadius.circular(8)
+              ),
+              fillColor: Colors.white,
+              filled: true,
+              isDense: true,
+              contentPadding: const EdgeInsets.fromLTRB(10, 12, 10, 12)
+            ),
+          ),
+        const SizedBox(height: 10,)
+        ],
+    );
+  }
+}
+
+class _LogoAplikasi extends StatelessWidget {
+  const _LogoAplikasi({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: TextField(
-        decoration: InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            isDense: true,
-            contentPadding: EdgeInsets.all(10),
-            border: OutlineInputBorder()),
+      padding: const EdgeInsets.only(top: 50),
+      child: Image.asset('assets/logo.png',
+      width: 150,
       ),
     );
   }
 }
 
-class JudulHalamanLogin extends StatelessWidget {
-  const JudulHalamanLogin({
+class _JudulFormLogin extends StatelessWidget {
+  const _JudulFormLogin({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 60),
-      child: Center(
-        child: Text(
-          'Aplikasi\nPendataan Warga',
-          style: TextStyle(fontSize: 30),
-          textAlign: TextAlign.center,
+    return Center(child: Padding(
+      padding: const EdgeInsets.only(top: 100),
+      child: Text('Aplikasi\nPendataan Warga',
+        style: TextStyle(
+          fontSize: 35,
+          fontWeight: FontWeight.bold
         ),
+        textAlign: TextAlign.center
       ),
-    );
+    ));
   }
 }
