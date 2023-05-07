@@ -12,7 +12,7 @@ class DashboardView extends StatelessWidget {
           InformasiPengguna(),
           SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.only(top: 100),
+              padding: const EdgeInsets.only(top: 175),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
@@ -99,16 +99,20 @@ class ListBerita extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Image.asset('assets/berita.jpg', height: 120,),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Image.asset('assets/berita2.jpg', height: 120,),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: Image.asset('assets/berita3.jpg', height: 120,),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Image.asset('assets/berita4.jpg', height: 120,),
             ),
           ],
         ),
