@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pendataanwarga/views/dashboard_view.dart';
 
 class LoginViews extends StatelessWidget {
   const LoginViews({super.key});
@@ -76,7 +77,13 @@ class _TombolLogin extends StatelessWidget {
           )
         ),
         onPressed: (){
-    
+
+            Navigator.pushReplacement(context,
+              MaterialPageRoute(
+                  builder: (c)=>DashboardView()
+                )
+            );
+            
       }, child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text('Login'),
